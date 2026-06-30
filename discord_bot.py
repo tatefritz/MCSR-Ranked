@@ -1,5 +1,9 @@
 import requests
 import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 bot_token = os.environ["DISCORD_TOKEN"]
 discord_application_id = os.environ["APPLICATION_ID"]

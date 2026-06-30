@@ -1,2 +1,1 @@
-requests
-dotenv
+requests== 2.32.5

@@ -1,11 +1,9 @@
 import requests
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-discord_application_id = os.getenv("APPLICATION_ID")
-discord_user_id = os.getenv("USER_ID")
-bot_token = os.getenv("DISCORD_TOKEN")
+bot_token = os.environ["DISCORD_TOKEN"]
+discord_application_id = os.environ["APPLICATION_ID"]
+discord_user_id = os.environ["USER_ID"]
 
 url = (
     f"https://discord.com/api/v9/applications/"

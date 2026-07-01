@@ -9,9 +9,23 @@ def convert_data(data) -> dict:
 	"data": {
 		"dynamic": [
 			{
+				"type": 3,
+				"name": "head",
+				"value": {
+					"url": f"{data["head_image"]}"
+				}
+			},
+			{
 				"type": 1,
-				"name": "rank",
+				"name": "badge_type",
 				"value": f"{data["badge_type"]}"
+			},
+			{
+				"type": 3,
+				"name": "badge_image",
+				"value": {
+					"url": f"{data["badge_image"]}"
+				}
 			},
 			{
 				"type": 1,
@@ -25,7 +39,7 @@ def convert_data(data) -> dict:
 			},
 			{
 				"type": 1,
-				"name": "pb",
+				"name": "personal_best",
 				"value": f"{data["personal_best"]}"
 			},
 			{
@@ -49,13 +63,6 @@ def convert_data(data) -> dict:
 				"value": f"{data["last_played"]}"
 			},
 			{
-				"type": 3,
-				"name": "head",
-				"value": {
-					"url": f"{data["head_image"]}"
-				}
-			},
-			{
 				"type": 1,
 				"name": "playtime",
 				"value": f"{data["play_time"]}"
@@ -65,12 +72,7 @@ def convert_data(data) -> dict:
 				"name": "matches",
 				"value": f"{data["played_matches"]}"
 			}
-		],
-		"primary": {
-			"rank_image": {
-				"url": f"{data["badge_image"]}"
-			}
-		}
+		]
 	}
 }
 

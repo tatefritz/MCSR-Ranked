@@ -1,7 +1,7 @@
 name: run main.py
 
 on:
-  workflow_dispatch:   # ← lets you trigger manually from the Actions tab
+  workflow_dispatch:
   schedule:
     - cron: '28,58 * * * *'
 
@@ -11,10 +11,10 @@ jobs:
     steps:
 
       - name: checkout repo content
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: setup python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           
@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      - name: execute py script # run main.py
+      - name: execute py script
         env:
           APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}

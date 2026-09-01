@@ -2,7 +2,7 @@ import requests
 import math
 from datetime import datetime
 
-img_start = "https://github.com/Tatertot5s/mcsr-badges/blob/main/"
+img_start = "https://github.com/tatefritz/MCSR-Ranked/blob/main/rank_icons/"
 img_end = ".png?raw=true"
 USERNAME = "Tatertot5"
 ELO_RANGES = [
@@ -80,8 +80,10 @@ def get_info(username: str) -> dict:
 	}
 
 def main():
-	a = get_info(USERNAME)
-	print(a)
+	try:
+		print(get_info(USERNAME))
+	except:
+		return
 
 
 if __name__ == '__main__':

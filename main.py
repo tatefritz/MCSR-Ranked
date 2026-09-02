@@ -77,9 +77,12 @@ def convert_data(data) -> dict:
 }
 
 def main() -> None:
-	data = get_info(MC_USERNAME)
-	discord_formatted_data = convert_data(data)
-	update_dc(discord_formatted_data)
+	try:
+		data = get_info(MC_USERNAME)
+		discord_formatted_data = convert_data(data)
+		update_dc(discord_formatted_data)
+	except:
+		pass
 
 
 

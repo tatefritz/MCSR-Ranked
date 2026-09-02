@@ -80,10 +80,7 @@ def get_info(username: str) -> dict:
 	}
 
 def main():
-	try:
-		print(get_info(USERNAME))
-	except:
-		return
+	print(get_info(USERNAME))
 
 
 if __name__ == '__main__':

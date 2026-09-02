@@ -47,7 +47,7 @@ def format_time(time: int) -> str:
 
 def get_rank(elo) -> list:
 	if elo == None:
-		return ELO_RANGES[16]
+		return ELO_RANGES[16][2]
 	for low, high, result in ELO_RANGES:
 		if low <= elo <= high:
 			return result

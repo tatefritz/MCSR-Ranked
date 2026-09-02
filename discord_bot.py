@@ -21,7 +21,6 @@ headers = {
 }
 
 def update_dc(new_json):
-	print(url)
 	response = requests.patch(
 	    url,
 	    headers=headers,

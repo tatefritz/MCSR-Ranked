@@ -21,11 +21,11 @@ headers = {
 }
 
 def update_dc(new_json):
+	print(url)
 	response = requests.patch(
 	    url,
 	    headers=headers,
 	    json=new_json,
 	)
-	
 	print("Status:", response.status_code)
 	print(response.text)

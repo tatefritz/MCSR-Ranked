@@ -22,6 +22,7 @@ ELO_RANGES = [
 	(1650, 1799, ["Diamond II", f"{img_start}diamond_II{img_end}"]),
 	(1800, 1999, ["Diamond III", f"{img_start}diamond_III{img_end}"]),
 	(2000, 3000, ["Netherite", f"{img_start}netherite{img_end}"]),
+	(-1, -1, ["Unranked", f"{img_start}unranked{img_end}"]),
 ]
 
 def format_ms(milli: int) -> str:
@@ -34,6 +35,8 @@ def format_ms(milli: int) -> str:
 	return f"{hours}h {minutes}m"
 
 def format_time(time: int) -> str:
+	if time == None:
+		return "0h 00m"
 	ms = time % 1000
 	seconds = (time // 1000) % 60
 	minutes = (time // (1000 * 60)) % 60
@@ -43,6 +46,8 @@ def format_time(time: int) -> str:
 	return f"{minutes:02}:{seconds:02}.{ms:03}"
 
 def get_rank(elo) -> list:
+	if elo == None:
+		return ELO_RANGES[16]
 	for low, high, result in ELO_RANGES:
 		if low <= elo <= high:
 			return result
@@ -72,7 +77,7 @@ def get_info(username: str) -> dict:
 		'rank_placement': data["seasonResult"]["last"]["eloRank"],
 		'peak_elo': data["seasonResult"]["highest"],
 		'wins': wins,
-		'winrate': str(math.floor(((wins)/(wins+loses))*100))+"%",
+		'winrate': (str(math.floor((wins/(wins+loses))*100))+"%") if (wins+loses) > 0 else "0%",
 		'played_matches': season_stats["playedMatches"]["ranked"],
 		'personal_best': format_time(season_stats["bestTime"]["ranked"]),
 		'play_time': format_ms(season_stats["playtime"]["ranked"]),

@@ -55,13 +55,13 @@ def get_rank(elo) -> list:
 
 def get_info(username: str) -> dict:
 	URL = f'https://api.mcsrranked.com/users/{username}'
-	
 	response = requests.get(URL)
 	if response.status_code == 200:
 		data = response.json()["data"]
 	else:
 		print(response.status_code)
 
+	print(data)
 	season_stats = data["statistics"]["season"]
 	wins = season_stats["wins"]["ranked"]
 	loses = season_stats["loses"]["ranked"]
@@ -79,13 +79,14 @@ def get_info(username: str) -> dict:
 		'wins': wins,
 		'winrate': (str(math.floor((wins/(wins+loses))*100))+"%") if (wins+loses) > 0 else "0%",
 		'played_matches': season_stats["playedMatches"]["ranked"],
-		'personal_best': format_time(season_stats["bestTime"]["ranked"]),
+		'personal_best': format_time(data["statistics"]["total"]["bestTime"]["ranked"]),
 		'play_time': format_ms(season_stats["playtime"]["ranked"]),
 		'last_played': datetime.fromtimestamp(data["timestamp"]["lastRanked"]).strftime("%m/%d/%Y"),
 	}
 
 def main():
-	print(get_info(USERNAME))
+	get_info(USERNAME)
+	#print(get_info(USERNAME))
 
 
 if __name__ == '__main__':

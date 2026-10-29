@@ -61,7 +61,6 @@ def get_info(username: str) -> dict:
 	else:
 		print(response.status_code)
 
-	print(data)
 	season_stats = data["statistics"]["season"]
 	wins = season_stats["wins"]["ranked"]
 	loses = season_stats["loses"]["ranked"]
@@ -85,8 +84,7 @@ def get_info(username: str) -> dict:
 	}
 
 def main():
-	get_info(USERNAME)
-	#print(get_info(USERNAME))
+	print(get_info(USERNAME))
 
 
 if __name__ == '__main__':
